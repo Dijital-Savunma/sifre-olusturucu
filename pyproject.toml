@@ -33,5 +33,8 @@ sifre-uret = "sifre_olusturucu.__main__:main"
 "Bug Tracker" = "https://github.com/dijital-savunma/sifre-olusturucu/issues"
 "Source" = "https://github.com/dijital-savunma/sifre-olusturucu"
 
+[tool.setuptools]
+packages = ["sifre_olusturucu"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
