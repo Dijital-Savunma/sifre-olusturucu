@@ -6,7 +6,7 @@ Güvenli ve kullanımı kolay şifre üretme kütüphanesi.
 
 ## 🌐 Web Arayüzü
 
-### [**Şimdi Dene - Tarayıcıda Şifre Üret**](https://dijitalsavunma.com/sifre-olusturucu)
+### [**Şimdi Dene - Tarayıcıda Şifre Üret**](https://dijitalsavunma.org/sifre-olusturucu)
 
 Hiçbir şey kurmadan, doğrudan tarayıcınızda güvenli şifre oluşturun.
 
@@ -100,7 +100,7 @@ sifre = passphrase_uret(kelime_sayisi=4)
 - 🔐 Python'un `secrets` modülü ile kriptografik güvenli rastgelelik
 - 🎯 Basit ve anlaşılır API
 - 💻 Komut satırı arayüzü (CLI)
-- 🌐 Web arayüzü (dijitalsavunma.com)
+- 🌐 Web arayüzü (dijitalsavunma.org)
 - ⚙️ Özelleştirilebilir karakter setleri
 - 🧠 Hatırlanabilir passphrase desteği
 - 📏 İstediğiniz uzunlukta güçlü şifreler
@@ -128,4 +128,4 @@ Apache License 2.0
 
 ---
 
-**[Dijital Savunma](https://dijitalsavunma.com)** topluluğunun bir projesidir.
+**[Dijital Savunma](https://dijitalsavunma.org)** topluluğunun bir projesidir.
