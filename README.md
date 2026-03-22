@@ -115,12 +115,17 @@ Web arayüzü tamamen client-side çalışır. Hiçbir veri sunucuya gönderilme
 
 ## 🤝 Katkıda Bulunma
 
-Katkılarınızı bekliyoruz. [CONTRIBUTING.md](https://github.com/dijital-savunma/topluluk/blob/main/CONTRIBUTING.md) dosyasına göz atın.
+Katkılarınızı bekliyoruz! Pull request göndermekten çekinmeyin.
+
+- 🐛 Hata bildirimleri
+- 💡 Yeni özellik önerileri
+- 📝 Dokümantasyon iyileştirmeleri
+- 🌐 Türkçe kelime listesi genişletmeleri
 
 ## 📄 Lisans
 
-[Apache License 2.0](LICENSE)
+Apache License 2.0
 
 ---
 
-**[Dijital Savunma](https://github.com/dijital-savunma/topluluk)** topluluğunun bir projesidir.
+**[Dijital Savunma](https://dijitalsavunma.com)** topluluğunun bir projesidir.
