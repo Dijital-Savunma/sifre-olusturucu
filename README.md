@@ -6,7 +6,7 @@ Güvenli ve kullanımı kolay şifre üretme kütüphanesi.
 
 ## 🌐 Web Arayüzü
 
-### [**Şimdi Dene - Tarayıcıda Şifre Üret**](https://dijital-savunma.github.io/sifre-olusturucu)
+### [**Şimdi Dene - Tarayıcıda Şifre Üret**](https://raw.githack.com/dijital-savunma/sifre-olusturucu/main/index.html)
 
 Hiçbir şey kurmadan, doğrudan tarayıcınızda güvenli şifre oluşturun.
 
