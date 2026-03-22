@@ -1,0 +1,34 @@
+name: Şifre Üret
+
+on:
+  workflow_dispatch:
+    inputs:
+      uzunluk:
+        description: 'Şifre uzunluğu'
+        required: false
+        default: '14'
+      adet:
+        description: 'Şifre adedi'
+        required: false
+        default: '5'
+
+jobs:
+  sifre-uret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo'yu Klonla
+        uses: actions/checkout@v3
+
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Şifre Üret
+        run: |
+          echo "=== ${{ github.event.inputs.adet }} adet ${{ github.event.inputs.uzunluk }} haneli şifre ==="
+          python3 -m sifre_olusturucu -u ${{ github.event.inputs.uzunluk }} -a ${{ github.event.inputs.adet }}
+
+          echo ""
+          echo "=== Passphrase örnekleri ==="
+          python3 -m sifre_olusturucu -p -a 3

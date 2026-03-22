@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenli Şifre Oluşturucu - Dijital Savunma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .password-display {
+            background: #f7f7f7;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .controls {
+            margin-bottom: 30px;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 8px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
+        .length-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            min-width: 35px;
+            text-align: center;
+        }
+
+        .checkboxes {
+            display: grid;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .checkbox-label {
+            font-weight: 500;
+            color: #555;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-generate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-copy {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-copy:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-copy.copied {
+            background: #4caf50;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .password-display {
+                font-size: 20px;
+                padding: 15px;
+            }
+
+            button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Güvenli Şifre Oluşturucu</h1>
+        <p class="subtitle">Kriptografik güvenli şifre üretin</p>
+
+        <div class="password-display" id="passwordDisplay">
+            Şifreniz burada görünecek
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Şifre Uzunluğu</label>
+                <div class="slider-container">
+                    <input type="range" id="lengthSlider" min="6" max="18" value="12">
+                    <span class="length-value" id="lengthValue">12</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Karakter Türleri</label>
+                <div class="checkboxes">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="uppercase" checked>
+                        <label for="uppercase" class="checkbox-label">Büyük Harfler (A-Z)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="lowercase" checked>
+                        <label for="lowercase" class="checkbox-label">Küçük Harfler (a-z)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="numbers" checked>
+                        <label for="numbers" class="checkbox-label">Rakamlar (0-9)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="symbols" checked>
+                        <label for="symbols" class="checkbox-label">Özel Karakterler (!@#$...)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn-generate" id="generateBtn">Şifre Oluştur</button>
+            <button class="btn-copy" id="copyBtn">Kopyala</button>
+        </div>
+
+        <div class="footer">
+            <a href="https://github.com/dijital-savunma/sifre-olusturucu" target="_blank">Dijital Savunma</a> | Açık Kaynak
+        </div>
+    </div>
+
+    <script>
+        const passwordDisplay = document.getElementById('passwordDisplay');
+        const lengthSlider = document.getElementById('lengthSlider');
+        const lengthValue = document.getElementById('lengthValue');
+        const generateBtn = document.getElementById('generateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const uppercase = document.getElementById('uppercase');
+        const lowercase = document.getElementById('lowercase');
+        const numbers = document.getElementById('numbers');
+        const symbols = document.getElementById('symbols');
+
+        let currentPassword = '';
+
+        lengthSlider.addEventListener('input', (e) => {
+            lengthValue.textContent = e.target.value;
+        });
+
+        function generatePassword() {
+            const length = parseInt(lengthSlider.value);
+            let charset = '';
+
+            if (uppercase.checked) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (lowercase.checked) charset += 'abcdefghijklmnopqrstuvwxyz';
+            if (numbers.checked) charset += '0123456789';
+            if (symbols.checked) charset += '!@#$%^&*()-_=+[]{}|;:,.<>?';
+
+            if (charset.length === 0) {
+                passwordDisplay.textContent = 'En az bir karakter türü seçin';
+                currentPassword = '';
+                return;
+            }
+
+            const array = new Uint32Array(length);
+            crypto.getRandomValues(array);
+
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += charset[array[i] % charset.length];
+            }
+
+            currentPassword = password;
+            passwordDisplay.textContent = password;
+        }
+
+        generateBtn.addEventListener('click', generatePassword);
+
+        copyBtn.addEventListener('click', () => {
+            if (!currentPassword) {
+                return;
+            }
+
+            navigator.clipboard.writeText(currentPassword).then(() => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Kopyalandı!';
+                copyBtn.classList.add('copied');
+
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+
+        generatePassword();
+    </script>
+</body>
+</html>

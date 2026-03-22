@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sifre-olusturucu"
+version = "0.1.0"
+description = "Güvenli şifre üretme kütüphanesi"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Dijital Savunma Topluluğu"}
+]
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+
+[project.scripts]
+sifre-uret = "sifre_olusturucu.__main__:main"
+
+[project.urls]
+"Homepage" = "https://github.com/dijital-savunma/sifre-olusturucu"
+"Bug Tracker" = "https://github.com/dijital-savunma/sifre-olusturucu/issues"
+"Source" = "https://github.com/dijital-savunma/sifre-olusturucu"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
