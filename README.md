@@ -11,7 +11,7 @@ Güvenli ve kullanımı kolay şifre üretme kütüphanesi.
 Hiçbir şey kurmadan, doğrudan tarayıcınızda güvenli şifre oluşturun.
 
 **Özellikler:**
-- ✅ 6-18 karakter arası uzunluk seçimi
+- ✅ 6-50 karakter arası uzunluk seçimi
 - ✅ Karakter türü kontrolleri (büyük/küçük harf, rakam, özel karakter)
 - ✅ Tek tıkla kopyalama
 - ✅ Modern, mobil uyumlu tasarım
@@ -47,7 +47,7 @@ sifre-uret --help
 ```
 
 **Parametreler:**
-- `-u, --uzunluk`: Şifre uzunluğu (6-18 arası önerilir, varsayılan: 12)
+- `-u, --uzunluk`: Şifre uzunluğu (varsayılan: 12, maksimum sınır yok)
 - `-p, --passphrase`: Hatırlanabilir şifre üret
 - `-k, --kelime-sayisi`: Passphrase kelime sayısı (varsayılan: 4)
 - `-a, --adet`: Üretilecek şifre adedi (varsayılan: 1)
@@ -95,51 +95,15 @@ from sifre_olusturucu import passphrase_uret
 sifre = passphrase_uret(kelime_sayisi=4)
 ```
 
-## 🚀 GitHub'da Kullanım
-
-### Doğrudan Komut Satırında
-
-```bash
-git clone https://github.com/dijital-savunma/sifre-olusturucu.git
-cd sifre-olusturucu
-python3 -m sifre_olusturucu -u 14
-```
-
-### GitHub Actions ile
-
-`.github/workflows/sifre-uret.yml` dosyası oluşturun:
-
-```yaml
-name: Şifre Üret
-
-on:
-  workflow_dispatch:
-
-jobs:
-  sifre-uret:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Python Kur
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Şifre Üret
-        run: |
-          python3 -m sifre_olusturucu -u 14
-          python3 -m sifre_olusturucu -u 15
-          python3 -m sifre_olusturucu -p
-```
-
 ## ✨ Özellikler
 
 - 🔐 Python'un `secrets` modülü ile kriptografik güvenli rastgelelik
 - 🎯 Basit ve anlaşılır API
 - 💻 Komut satırı arayüzü (CLI)
-- 🌐 Web arayüzü (GitHub Pages)
+- 🌐 Web arayüzü (dijitalsavunma.com)
 - ⚙️ Özelleştirilebilir karakter setleri
 - 🧠 Hatırlanabilir passphrase desteği
-- 📏 6-18 haneli güçlü şifreler
+- 📏 İstediğiniz uzunlukta güçlü şifreler
 - 📦 Sıfır dışa bağımlılık
 - 🇹🇷 %100 Türkçe
 
@@ -148,13 +112,6 @@ jobs:
 Bu kütüphane şifre üretimi için Python'un `secrets` modülünü kullanır. `random` modülünden farklı olarak `secrets`, kriptografik amaçlar için güvenlidir ve tahmin edilemez şifreler üretir.
 
 Web arayüzü tamamen client-side çalışır. Hiçbir veri sunucuya gönderilmez, tarayıcınızın kriptografik API'si kullanılır.
-
-## 🧪 Testler
-
-```bash
-pip install pytest
-pytest tests/
-```
 
 ## 🤝 Katkıda Bulunma
 
